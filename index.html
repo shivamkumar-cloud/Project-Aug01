@@ -3,349 +3,285 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To The One Who Completes My Stack ❤️</title>
+    <title>For My Babygirl ❤️</title>
     
-    <!-- Libraries -->
+    <!-- External Libraries -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <!-- Romantic Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --primary: #ff4d6d;
-            --secondary: #ff85a1;
-            --dark: #050505;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            cursor: url('https://cur.cursors-4u.net/symbols/sym-9/sym847.cur'), auto;
+            --rose: #ff85a1;
+            --soft-pink: #fce7f3;
+            --deep-rose: #ff4d6d;
+            --warm-white: #fffafa;
         }
 
         body {
-            background-color: var(--dark);
-            color: white;
+            background-color: var(--warm-white);
+            color: #4a4a4a;
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
+            margin: 0;
         }
 
         .cursive { font-family: 'Dancing Script', cursive; }
-        .mono { font-family: 'JetBrains Mono', monospace; }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: #0a0a0a; }
-        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
-
-        /* Glassmorphism Styles */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Polaroid Styling */
-        .polaroid-card {
-            perspective: 1000px;
-            opacity: 0;
-            transform: translateY(50px);
-        }
-
-        .polaroid-inner {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            padding-bottom: 4rem;
-            position: relative;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
-        }
-
-        .polaroid-card:hover .polaroid-inner {
-            transform: rotateY(5deg) rotateX(5deg) scale(1.05);
-            border-color: var(--primary);
-            box-shadow: 0 15px 40px rgba(255, 77, 109, 0.2);
-        }
-
-        .location-tag {
-            display: block;
-            font-size: 0.75rem;
-            color: var(--primary);
-            font-family: 'JetBrains Mono', monospace;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .memory-text {
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.5rem;
-            line-height: 1.3;
-            color: #fce7f3;
-            margin-bottom: 0.5rem;
-        }
-
-        .memory-subtext {
-            font-size: 0.85rem;
-            color: #9ca3af;
-            line-height: 1.5;
-        }
-
-        /* Animations */
-        .heartbeat { animation: heartbeat 1.5s infinite; }
-        @keyframes heartbeat {
-            0% { transform: scale(1); }
-            15% { transform: scale(1.1); }
-            30% { transform: scale(1); }
-        }
-
-        .floating-heart {
-            position: absolute;
-            color: rgba(255, 77, 109, 0.3);
+        /* Background Heart Animation */
+        .heart-particle {
+            position: fixed;
             pointer-events: none;
             z-index: 0;
-            animation: floatUp 4s linear infinite;
+            color: var(--rose);
+            opacity: 0.5;
+            animation: floatUp 6s linear infinite;
         }
 
         @keyframes floatUp {
-            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
             50% { opacity: 0.8; }
-            100% { transform: translateY(-150px) rotate(45deg); opacity: 0; }
+            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
         }
 
-        .gradient-text {
-            background: linear-gradient(45deg, #ff4d6d, #ff85a1, #ffffff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        /* Polaroid Frames */
+        .polaroid {
+            background: white;
+            padding: 15px 15px 40px 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border-radius: 4px;
+            transition: all 0.4s ease;
+            transform: rotate(var(--rotation, 0deg));
+            border: 1px solid #f0f0f0;
         }
 
-        #no-btn {
-            transition: all 0.2s ease;
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.05) translateY(-10px) !important;
+            box-shadow: 0 20px 40px rgba(255, 133, 161, 0.3);
+            z-index: 50;
+        }
+
+        .polaroid-placeholder {
+            width: 100%;
+            aspect-ratio: 1/1;
+            background: var(--soft-pink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2px;
+            margin-bottom: 15px;
+        }
+
+        /* Fixed Section Layout */
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
             position: relative;
         }
 
-        .section-padding { padding: 100px 20px; }
+        .reveal { opacity: 0; transform: translateY(30px); }
+
+        .btn-grad {
+            background: linear-gradient(45deg, #ff4d6d, #ff85a1);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+            transition: 0.3s;
+        }
+
+        .btn-grad:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 77, 109, 0.6);
+        }
+
+        #no-btn { transition: all 0.1s ease; }
     </style>
 </head>
 <body>
 
-    <!-- BACKGROUND EFFECTS -->
-    <div id="heart-container" class="fixed inset-0 pointer-events-none"></div>
-
     <!-- 1. HERO SECTION -->
-    <section class="min-h-screen flex items-center justify-center relative px-6">
+    <section id="hero">
         <div class="text-center z-10">
-            <h1 class="text-5xl md:text-8xl font-bold mb-6 gradient-text">Hey Beautiful...</h1>
-            <p class="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto leading-relaxed mb-8" id="hero-subtitle">
-                I spend my days building systems for the world, but tonight, I built a world just for you.
+            <h1 class="text-pink-500 text-6xl md:text-8xl cursive mb-6 reveal">Hello, Babygirl ❤️</h1>
+            <p class="text-lg md:text-xl text-gray-500 max-w-xl mx-auto mb-10 reveal">
+                I know I'm usually busy with my screens, but tonight, my only focus is making you smile.
             </p>
-            <div class="heartbeat inline-block mb-12">
-                <svg class="w-16 h-16 text-pink-500" fill="currentColor" viewBox="0 0 20 20"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"></path></svg>
+            <div class="reveal">
+                <button onclick="scrollToNext('#about')" class="btn-grad px-10 py-4 rounded-full font-bold uppercase tracking-widest">
+                    Enter My Heart
+                </button>
             </div>
-            <br>
-            <button onclick="scrollToSection('#logic')" class="px-10 py-4 bg-pink-600 rounded-full font-bold uppercase tracking-widest hover:bg-pink-500 transition-all shadow-lg shadow-pink-500/20">
-                Unlock My Heart
-            </button>
         </div>
     </section>
 
-    <!-- 2. THE LOGIC SECTION -->
-    <section id="logic" class="section-padding flex items-center justify-center min-h-screen">
-        <div class="max-w-4xl w-full">
-            <h2 class="text-4xl font-bold mb-12 cursive text-pink-500 text-center">My Developer Logic ❤️</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="glass-card p-8 rounded-3xl border-l-4 border-pink-500">
-                    <p class="mono text-pink-400 mb-4">// System Status</p>
-                    <p class="text-xl">"I build apps that never crash, but I stumble over my words every time I see you."</p>
-                </div>
-                <div class="glass-card p-8 rounded-3xl border-l-4 border-pink-500">
-                    <p class="mono text-pink-400 mb-4">// Database Query</p>
-                    <p class="text-xl">"I searched through billions of lines of code, only to find that you are the only 'feature' I ever needed."</p>
-                </div>
-                <div class="glass-card p-8 rounded-3xl border-l-4 border-pink-500 md:col-span-2">
-                    <p class="mono text-pink-400 mb-4">// Main Function</p>
-                    <p class="text-2xl cursive">"You are the CSS to my HTML. Without you, my life has no style, no color, and no meaning."</p>
+    <!-- 2. THE ADORATION SECTION -->
+    <section id="about" class="bg-pink-50/50">
+        <div class="max-w-4xl grid md:grid-cols-2 gap-10 items-center">
+            <div class="reveal">
+                <h2 class="text-4xl font-bold text-pink-600 cursive mb-6">You're My Favorite Person...</h2>
+                <ul class="space-y-6 text-left">
+                    <li class="flex items-start">
+                        <span class="mr-4 text-2xl">😊</span>
+                        <p class="text-gray-700 italic">"The way your eyes disappear when you laugh—it's the cutest thing in the world."</p>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="mr-4 text-2xl">🧸</span>
+                        <p class="text-gray-700 italic">"You're so soft, warm, and hugging you feels like the best place on earth."</p>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="mr-4 text-2xl">🤏</span>
+                        <p class="text-gray-700 italic">"I could spend the whole day just pinching those chubby, cute cheeks!"</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="reveal flex justify-center">
+                <div class="w-64 h-64 bg-pink-200 rounded-full flex items-center justify-center border-8 border-white shadow-xl">
+                    <span class="text-8xl animate-bounce">👸</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 3. THE TEASE SECTION -->
-    <section class="section-padding bg-pink-900/10 flex items-center justify-center min-h-screen relative overflow-hidden">
-        <div class="text-center z-10">
-            <h2 class="text-4xl font-bold mb-6">Quick Verification</h2>
-            <p class="text-xl text-gray-400 mb-12">Do you agree that you are the prettiest girl in the entire universe?</p>
-            <div class="flex flex-col md:flex-row gap-6 items-center justify-center">
-                <button onclick="confettiPop()" class="px-12 py-4 bg-green-500 rounded-xl font-bold text-xl hover:scale-110 transition-transform">
-                    YES, I DO! ❤️
+    <section>
+        <div class="p-12 rounded-3xl bg-white shadow-2xl border border-pink-100 text-center reveal max-w-lg w-full">
+            <h2 class="text-3xl font-bold mb-4">A Quick Question...</h2>
+            <p class="text-gray-500 mb-10 italic">Do you know who is the most beautiful girl in the world?</p>
+            
+            <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+                <button onclick="sayYes()" class="px-10 py-3 bg-green-500 text-white rounded-xl font-bold hover:scale-110 transition">
+                    Me! (Obviously 💁‍♀️)
                 </button>
-                <button id="no-btn" onmouseover="moveNoButton()" class="px-12 py-4 bg-red-600 rounded-xl font-bold text-xl">
-                    NO 🙄
+                <button id="no-btn" onmouseover="dodgeButton()" class="px-10 py-3 bg-gray-400 text-white rounded-xl font-bold">
+                    No...
                 </button>
             </div>
-            <p id="tease-msg" class="mt-8 text-pink-400 font-bold h-6"></p>
+            <p id="tease-msg" class="mt-8 text-pink-500 font-semibold h-4"></p>
         </div>
     </section>
 
-    <!-- 4. THE MEMORY GALLERY -->
-    <section id="gallery" class="section-padding">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl md:text-6xl font-bold cursive text-pink-500 mb-4">Our Empty Gallery</h2>
-                <p class="text-gray-400 mono italic uppercase text-sm tracking-widest">"Some moments are too precious to be pixels."</p>
+    <!-- 4. THE DREAM GALLERY SECTION -->
+    <section id="gallery" class="bg-pink-50/30">
+        <div class="text-center mb-16 reveal">
+            <h2 class="text-5xl cursive text-pink-600 mb-4">Our Memory Wishlist</h2>
+            <p class="text-gray-400 italic">"I haven't added photos here yet, because the best ones are waiting for us to meet."</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl w-full px-4" id="polaroid-grid">
+            
+            <div class="polaroid reveal" style="--rotation: -3deg">
+                <div class="polaroid-placeholder"><span class="text-4xl opacity-20">📸</span></div>
+                <p class="cursive text-xl text-center text-gray-700">The "First Date" Selfie</p>
+                <p class="text-xs text-center text-gray-400 mt-2">I want to see how much you blush!</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10" id="polaroid-grid">
-                
-                <!-- Frame 1 -->
-                <div class="polaroid-card">
-                    <div class="polaroid-inner">
-                        <span class="location-tag">📍 The First Meet ❤️</span>
-                        <p class="memory-text">"Where two strangers met, but my heart quietly decided..."</p>
-                        <p class="memory-subtext">"I want to know this person more. Little did I know, this day would become my favorite."</p>
-                    </div>
-                </div>
+            <div class="polaroid reveal" style="--rotation: 2deg">
+                <div class="polaroid-placeholder"><span class="text-4xl opacity-20">📸</span></div>
+                <p class="cursive text-xl text-center text-gray-700">The Silly Face Photo</p>
+                <p class="text-xs text-center text-gray-400 mt-2">My favorite little cartoon face.</p>
+            </div>
 
-                <!-- Frame 2 -->
-                <div class="polaroid-card">
-                    <div class="polaroid-inner">
-                        <span class="location-tag">🤗 The First Hug ❤️</span>
-                        <p class="memory-text">"No camera captured this moment... but my heart saved it forever."</p>
-                        <p class="memory-subtext">"The world became quiet, and that one hug felt like home."</p>
-                    </div>
-                </div>
+            <div class="polaroid reveal" style="--rotation: -1deg">
+                <div class="polaroid-placeholder"><span class="text-4xl opacity-20">📸</span></div>
+                <p class="cursive text-xl text-center text-gray-700">The Ice Cream Mess</p>
+                <p class="text-xs text-center text-gray-400 mt-2">I want to see you all happy and sweet.</p>
+            </div>
 
-                <!-- Frame 3 -->
-                <div class="polaroid-card">
-                    <div class="polaroid-inner">
-                        <span class="location-tag">🛕 Our Temple Visit 🙏</span>
-                        <p class="memory-text">"Among thousands of prayers, I had only one wish..."</p>
-                        <p class="memory-subtext">"May this beautiful person always smile. A peaceful place, a perfect memory."</p>
-                    </div>
-                </div>
+            <div class="polaroid reveal" style="--rotation: 4deg">
+                <div class="polaroid-placeholder"><span class="text-4xl opacity-20">📸</span></div>
+                <p class="cursive text-xl text-center text-gray-700">The Sunset Cuddle</p>
+                <p class="text-xs text-center text-gray-400 mt-2">Your head on my shoulder, looking at the sky.</p>
+            </div>
 
-                <!-- Frame 4 -->
-                <div class="polaroid-card">
-                    <div class="polaroid-inner">
-                        <span class="location-tag">☕ Random Talks</span>
-                        <p class="memory-text">"Those endless talks, silly jokes, and random discussions..."</p>
-                        <p class="memory-subtext">"I don't know how hours disappear so quickly when I'm with you."</p>
-                    </div>
-                </div>
+            <div class="polaroid reveal" style="--rotation: -2deg">
+                <div class="polaroid-placeholder"><span class="text-4xl opacity-20">📸</span></div>
+                <p class="cursive text-xl text-center text-gray-700">The Candid Laugh</p>
+                <p class="text-xs text-center text-gray-400 mt-2">When you're just being your cute self.</p>
+            </div>
 
-                <!-- Frame 5 -->
-                <div class="polaroid-card">
-                    <div class="polaroid-inner">
-                        <span class="location-tag">😂 Your Cute Anger</span>
-                        <p class="memory-text text-pink-400 font-bold">Warning ⚠️<br>A cute girl.exe has stopped working.</p>
-                        <p class="memory-subtext">"Reason: Developer forgot attention. Solution: Unlimited hugs required 🤭❤️"</p>
-                    </div>
-                </div>
-
-                <!-- Frame 6 -->
-                <div class="polaroid-card">
-                    <div class="polaroid-inner">
-                        <span class="location-tag">❤️ The Little Things</span>
-                        <p class="memory-text">"Your small habits, your expressions, your cute reactions..."</p>
-                        <p class="memory-subtext">"These little things became my biggest reasons to smile."</p>
-                    </div>
-                </div>
-
-                <!-- Frame 7 -->
-                <div class="polaroid-card">
-                    <div class="polaroid-inner">
-                        <span class="location-tag">🚀 Future Memories</span>
-                        <p class="memory-text">"Gallery loading... Future photos are waiting..."</p>
-                        <p class="memory-subtext">"New adventures, new laughs. Storage capacity: Unlimited ❤️"</p>
-                    </div>
-                </div>
-
-                <!-- Frame 8 (Reserved) -->
-                <div class="polaroid-card md:col-span-2">
-                    <div class="polaroid-inner border-2 border-dashed border-pink-500/50 flex flex-col items-center justify-center text-center">
-                        <h3 class="text-3xl cursive text-pink-400 mb-4">Reserved For Our Next Memory ❤️</h3>
-                        <p class="text-lg italic px-4 mb-6">"This space is intentionally empty... because my favorite memories with you haven't happened yet."</p>
-                        <button onclick="finalPlan()" class="bg-pink-600 px-8 py-3 rounded-full font-bold hover:bg-pink-500 transition-all">
-                            Let's Create Another Memory 📸❤️
-                        </button>
-                    </div>
-                </div>
+            <div class="flex items-center justify-center">
+                <button onclick="showMoreSecret()" class="reveal text-pink-500 font-bold underline hover:text-pink-700 transition">
+                    Show More...
+                </button>
             </div>
         </div>
     </section>
 
-    <!-- 5. FINAL LETTER -->
-    <footer class="section-padding text-center relative overflow-hidden">
-        <div class="max-w-2xl mx-auto z-10 relative">
-            <h2 class="text-5xl font-bold cursive text-pink-500 mb-8">Happy Girlfriend Day!</h2>
-            <p class="text-xl text-gray-300 leading-loose mb-12">
-                You are my most successful deployment. I promise to keep debugging our problems, 
-                optimizing our happiness, and making sure our love never has a '404' error. 
-                You make me feel like the luckiest developer in the world.
+    <!-- 5. FINAL LOVE NOTE -->
+    <footer class="py-20 text-center">
+        <div class="reveal px-6">
+            <h2 class="text-4xl cursive text-pink-600 mb-6">See you tonight, Babygirl.</h2>
+            <p class="text-gray-500 max-w-lg mx-auto leading-relaxed mb-10 italic">
+                I built this just for you. Now, let's go out and start filling these frames. ❤️
             </p>
-            <p class="cursive text-3xl text-pink-400">I love you more than code. ❤️</p>
-            <div class="mt-20 text-xs mono text-gray-600 uppercase tracking-widest">
-                Built with Love & 0 Bugs by Your Man
-            </div>
+            <div class="text-pink-400 animate-bounce text-3xl">❤️</div>
         </div>
     </footer>
 
+    <!-- Overlay Message -->
+    <div id="overlay" class="fixed inset-0 bg-white/95 z-[100] flex items-center justify-center p-8 hidden opacity-0">
+        <div class="text-center max-w-md">
+            <h3 class="text-4xl cursive text-pink-600 mb-6">Patience, Babygirl! ❤️</h3>
+            <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                "We have to meet first babygirl to make our beautiful gallery. These frames are waiting for YOUR smile."
+            </p>
+            <button onclick="closeOverlay()" class="btn-grad px-8 py-3 rounded-full font-bold">I Can't Wait! 😍</button>
+        </div>
+    </div>
+
     <script>
-        // --- 1. INITIALIZATION ---
-        gsap.registerPlugin(ScrollTrigger);
-
+        // Start scripts when everything loads
         window.onload = () => {
-            // Hero Animations
-            gsap.from("#hero-subtitle", { opacity: 0, y: 20, duration: 1.5, delay: 0.5 });
-            
-            // Gallery Stagger
-            gsap.to(".polaroid-card", {
-                scrollTrigger: {
-                    trigger: "#polaroid-grid",
-                    start: "top 80%",
-                },
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                stagger: 0.2,
-                ease: "power3.out"
-            });
-
-            startFloatingHearts();
+            gsap.registerPlugin(ScrollTrigger);
+            initHearts();
+            initScrollAnims();
         };
 
-        // --- 2. FLOATING HEARTS ---
-        function startFloatingHearts() {
-            const container = document.getElementById('heart-container');
-            const icons = ['❤️', '💖', '✨', '🌸', '💕'];
-            
+        // Floating Hearts Background
+        function initHearts() {
+            const container = document.body;
             setInterval(() => {
                 const heart = document.createElement('div');
-                heart.className = 'floating-heart';
-                heart.innerText = icons[Math.floor(Math.random() * icons.length)];
+                heart.className = 'heart-particle';
+                heart.innerHTML = ['❤️', '💖', '🌸', '✨'][Math.floor(Math.random() * 4)];
                 heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.top = '100vh';
-                heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
                 container.appendChild(heart);
-                
-                setTimeout(() => heart.remove(), 4000);
-            }, 600);
+                setTimeout(() => heart.remove(), 6000);
+            }, 500);
         }
 
-        // --- 3. THE "NO" BUTTON DODGE ---
-        function moveNoButton() {
+        // Scroll Animations
+        function initScrollAnims() {
+            gsap.utils.toArray('.reveal').forEach(elem => {
+                gsap.to(elem, {
+                    scrollTrigger: {
+                        trigger: elem,
+                        start: "top 90%",
+                    },
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    ease: "power2.out"
+                });
+            });
+        }
+
+        function scrollToNext(id) {
+            document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // The "No" Button dodging
+        function dodgeButton() {
             const btn = document.getElementById('no-btn');
-            const msg = document.getElementById('tease-msg');
-            
-            // Randomly move button within a certain range
             const x = Math.random() * (window.innerWidth - 150);
             const y = Math.random() * (window.innerHeight - 100);
             
@@ -353,41 +289,32 @@
             btn.style.left = x + 'px';
             btn.style.top = y + 'px';
             btn.style.zIndex = '999';
-
-            const funnyMessages = [
-                "Error 403: Forbidden Action",
-                "Nice try, babe!",
-                "Try again! 😜",
-                "Click YES already!",
-                "I'm too fast for you!"
-            ];
-            msg.innerText = funnyMessages[Math.floor(Math.random() * funnyMessages.length)];
+            
+            const msgs = ["Wrong choice! 😜", "Try again!", "You know it's you!", "Nope! ❌"];
+            document.getElementById('tease-msg').innerText = msgs[Math.floor(Math.random()*msgs.length)];
         }
 
-        // --- 4. INTERACTIONS ---
-        function confettiPop() {
+        function sayYes() {
             confetti({
                 particleCount: 150,
                 spread: 70,
                 origin: { y: 0.6 },
-                colors: ['#ff4d6d', '#ffffff', '#ff85a1']
+                colors: ['#ff4d6d', '#ff85a1', '#ffffff']
             });
-            alert("Correct Answer! You're gorgeous and you know it! ❤️");
+            alert("Correct Answer! You're my queen! ❤️");
         }
 
-        function finalPlan() {
-            confetti({
-                particleCount: 300,
-                spread: 100,
-                origin: { y: 0.7 }
-            });
-            setTimeout(() => {
-                alert("Let's fill that empty space tonight. 7:00 PM. Get ready for our date! ❤️📸");
-            }, 500);
+        // Secret Gallery Message
+        function showMoreSecret() {
+            const overlay = document.getElementById('overlay');
+            overlay.classList.remove('hidden');
+            gsap.to(overlay, { opacity: 1, duration: 0.5 });
         }
 
-        function scrollToSection(id) {
-            document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+        function closeOverlay() {
+            const overlay = document.getElementById('overlay');
+            gsap.to(overlay, { opacity: 0, duration: 0.5, onComplete: () => overlay.classList.add('hidden') });
+            confetti({ particleCount: 100, spread: 50 });
         }
     </script>
 </body>
