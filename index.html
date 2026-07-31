@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Surprise for You ❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Premium Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Background Elements -->
+    <div class="background-overlay"></div>
+    <div id="particles-container"></div>
+
+    <main id="app">
+        <!-- Scene 1: Comic Intro -->
+        <section id="scene-intro" class="scene active">
+            <div class="comic-container">
+                <div id="dialogue-box" class="speech-bubble">
+                    <span id="char-name"></span>
+                    <p id="char-text"></p>
+                </div>
+                <div class="character-area">
+                    <div class="char-silhouette admin"></div>
+                    <div class="char-silhouette junior"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scene 2: Security Check -->
+        <section id="scene-security" class="scene">
+            <div class="glass-card">
+                <h2>Verification Required</h2>
+                <p>Who are you?</p>
+                <div class="input-group">
+                    <input type="text" id="name-input" placeholder="Enter your name..." autocomplete="off">
+                    <button id="verify-btn">Identify</button>
+                </div>
+                <p id="security-error" class="error-msg"></p>
+            </div>
+        </section>
+
+        <!-- Scene 3: Loading -->
+        <section id="scene-loading" class="scene">
+            <div class="heart-loader">
+                <svg viewBox="0 0 32 32">
+                    <path d="M16 28.5L14.1 26.7C7.3 20.6 2.8 16.5 2.8 11.5C2.8 7.4 6 4.2 10.1 4.2C12.4 4.2 14.6 5.3 16 7.1C17.4 5.3 19.6 4.2 21.9 4.2C26 4.2 29.2 7.4 29.2 11.5C29.2 16.5 24.7 20.6 17.9 26.7L16 28.5Z" fill="red"/>
+                </svg>
+            </div>
+            <h3 id="loading-text">Fetching data from Admin's heart...</h3>
+        </section>
+
+        <!-- Scene 4: Storyline Container -->
+        <section id="scene-main" class="scene">
+            <div id="story-content" class="story-container">
+                <!-- Content injected via JS -->
+            </div>
+        </section>
+        
+        <!-- Final Screen -->
+        <section id="scene-final" class="scene">
+            <div class="final-card">
+                <div class="petal-rain"></div>
+                <div id="final-messages"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
